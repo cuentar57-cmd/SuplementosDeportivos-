@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PowerFuel | Suplementos Deportivos</title>
 
+<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome Icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 *{
@@ -20,48 +24,44 @@ body{
   color:#fff;
 }
 
-/* ====== BARRA SUPERIOR VIDA PRO ====== */
-.topbar {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+/* ===== TOPBAR ===== */
+.topbar{
   background:#000;
   padding:8px 60px;
+  display:flex;
+  justify-content:space-between;
   font-size:14px;
-  opacity:.95;
+  border-bottom:1px solid rgba(255,255,255,.05);
 }
-.topbar span {
-  opacity:.8;
-}
-.topbar a {
+
+.topbar span{opacity:.8;}
+.topbar a{
   color:#00ff88;
   text-decoration:none;
   margin-left:20px;
-  font-weight:600;
+  font-weight:500;
 }
 
-/* ====== HEADER BRUTAL ====== */
+/* ===== HEADER ===== */
 header{
   position:sticky;
   top:0;
   z-index:100;
   background:rgba(0,0,0,.85);
   backdrop-filter:blur(10px);
-  border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .header-inner{
+  padding:20px 60px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:20px 60px;
 }
 
 .logo{
   font-size:28px;
   font-weight:700;
   color:#00ff88;
-  letter-spacing:1px;
 }
 
 .buy-btn{
@@ -70,8 +70,8 @@ header{
   border:2px solid #00ff88;
   background:transparent;
   color:#00ff88;
-  font-weight:600;
   cursor:pointer;
+  font-weight:600;
   transition:.3s;
 }
 .buy-btn:hover{
@@ -79,7 +79,7 @@ header{
   color:#000;
 }
 
-/* ====== HERO ====== */
+/* ===== HERO ===== */
 .hero{
   height:90vh;
   background:
@@ -90,68 +90,110 @@ header{
   padding:0 60px;
 }
 
-.hero-content{
-  max-width:600px;
+.hero-content{max-width:600px;}
+.hero h1{font-size:52px;line-height:1.1;}
+.hero h1 span{color:#00ff88;}
+.hero p{margin:20px 0;opacity:.9;}
+
+/* ===== FEATURES ===== */
+.features{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:30px;
+  padding:60px;
+  background:#111;
 }
-.hero h1 span{
+
+.feature{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+}
+
+.feature i{
+  font-size:26px;
   color:#00ff88;
 }
 
-/* ====== CATEGORÍAS ====== */
-.filters {
+/* ===== FILTERS ===== */
+.filters{
   display:flex;
   gap:15px;
-  padding:25px 60px;
-  font-size:16px;
+  padding:30px 60px;
   overflow-x:auto;
 }
-.filters button {
-  padding:10px 18px;
+
+.filters button{
   background:#161616;
+  color:#fff;
   border:none;
+  padding:10px 18px;
   border-radius:20px;
   cursor:pointer;
-  opacity:.85;
   transition:.3s;
 }
-.filters button:hover,
-.filters button.active {
+
+.filters button.active,
+.filters button:hover{
   background:#00ff88;
   color:#000;
-  opacity:1;
 }
 
-/* ====== PRODUCTS ====== */
+/* ===== PRODUCTS ===== */
 .products{
-  padding:50px 60px;
+  padding:60px;
 }
-.products h2{margin-bottom:35px;font-size:36px;}
+
+.products h2{
+  font-size:36px;
+  margin-bottom:40px;
+}
 
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:28px;
+  gap:30px;
 }
+
 .card{
   background:#161616;
-  border-radius:12px;
+  border-radius:14px;
   padding:18px;
   transition:.3s;
 }
-.card:hover{transform:translateY(-7px);}
-.card img{width:100%;height:200px;object-fit:cover;border-radius:10px;}
+
+.card:hover{transform:translateY(-6px);}
+
+.card img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
 .price-old{
   text-decoration:line-through;
-  opacity:.6;
+  opacity:.5;
   font-size:14px;
 }
+
 .price-new{
-  font-size:22px;
   color:#00ff88;
+  font-size:22px;
   margin:8px 0;
 }
 
-/* ====== CART ====== */
+.card button{
+  width:100%;
+  padding:12px;
+  background:#00ff88;
+  border:none;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+}
+
+/* ===== CART ===== */
 .cart{
   position:fixed;
   right:-380px;
@@ -163,17 +205,23 @@ header{
   transition:.35s;
   z-index:300;
 }
+
 .cart.active{right:0;}
+
 .cart-icon{
   position:fixed;
-  bottom:25px;
   right:25px;
+  bottom:25px;
+  width:55px;
+  height:55px;
   background:#00ff88;
   color:#000;
-  width:55px;height:55px;
-  display:flex;align-items:center;justify-content:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   border-radius:50%;
-  font-size:22px;cursor:pointer;
+  font-size:22px;
+  cursor:pointer;
   z-index:400;
 }
 </style>
@@ -181,16 +229,16 @@ header{
 
 <body>
 
-<!-- 🟩 BARRA SUPERIOR (cuenta + carrito) -->
+<!-- TOPBAR -->
 <div class="topbar">
-  <span>Envíos a todo el país • 3 cuotas sin interés</span>
+  <span><i class="fa-solid fa-truck"></i> Envíos a todo el país · <i class="fa-solid fa-credit-card"></i> 3 cuotas sin interés</span>
   <div>
-    <a href="#">Iniciar sesión</a>
-    <a href="#" onclick="toggleCart()">🛒 Carrito</a>
+    <a href="#"><i class="fa-regular fa-user"></i> Mi cuenta</a>
+    <a href="#" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
   </div>
 </div>
 
-<!-- 🟢 HEADER -->
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="logo">PowerFuel</div>
@@ -200,25 +248,44 @@ header{
   </div>
 </header>
 
-<!-- 🏋️ HERO -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
-    <h1>Tu energía. <span>Tu fuerza. Tu mejor versión.</span></h1>
-    <p>Suplementos deportivos premium, con ofertas, precios visibles y envío seguro.</p>
+    <h1>Construí tu <span>mejor versión</span></h1>
+    <p>Suplementos deportivos premium con precios claros, ofertas reales y envío seguro.</p>
   </div>
 </section>
 
-<!-- ⭐ CATEGORÍAS -->
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature">
+    <i class="fa-solid fa-dumbbell"></i>
+    <div>Productos originales y de alto rendimiento</div>
+  </div>
+  <div class="feature">
+    <i class="fa-solid fa-bolt"></i>
+    <div>Más fuerza, energía y recuperación</div>
+  </div>
+  <div class="feature">
+    <i class="fa-solid fa-shield-halved"></i>
+    <div>Compra segura y protegida</div>
+  </div>
+  <div class="feature">
+    <i class="fa-solid fa-location-dot"></i>
+    <div>Envíos a todo el país</div>
+  </div>
+</section>
+
+<!-- FILTERS -->
 <div class="filters">
   <button class="active">Todos</button>
   <button>Proteínas</button>
   <button>Creatina</button>
   <button>Pre-Entreno</button>
   <button>Aminoácidos</button>
-  <button>Quemadores</button>
 </div>
 
-<!-- 🛍️ PRODUCTS -->
+<!-- PRODUCTS -->
 <section class="products">
   <h2>Ofertas destacadas</h2>
   <div class="grid">
@@ -226,43 +293,45 @@ header{
       <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1">
       <div class="price-old">$30.000</div>
       <div class="price-new">$25.000</div>
-      <button onclick="addToCart('Proteína Whey',25000)">Agregar al carrito</button>
+      <button onclick="addToCart('Proteína Whey',25000)">
+        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+      </button>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
       <div class="price-old">$22.000</div>
       <div class="price-new">$18.000</div>
-      <button onclick="addToCart('Creatina',18000)">Agregar al carrito</button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1594737625785-cf9c46c84a9a">
-      <div class="price-old">$28.000</div>
-      <div class="price-new">$22.000</div>
-      <button onclick="addToCart('Pre Entreno',22000)">Agregar al carrito</button>
+      <button onclick="addToCart('Creatina',18000)">
+        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
+      </button>
     </div>
   </div>
 </section>
 
-<!-- 🛒 CARRITO -->
+<!-- CART -->
 <div class="cart" id="cart">
   <h3>Tu carrito</h3>
   <ul id="cartItems"></ul>
-  <div class="cart-total">Total: $<span id="total">0</span></div>
+  <strong>Total: $<span id="total">0</span></strong>
+  <br><br>
   <button>Finalizar compra</button>
 </div>
 
-<div class="cart-icon" onclick="toggleCart()">🛒</div>
+<div class="cart-icon" onclick="toggleCart()">
+  <i class="fa-solid fa-cart-shopping"></i>
+</div>
 
 <script>
 let cart=[];
 let total=0;
+
 function addToCart(product,price){
   cart.push({product,price});
   total+=price;
   renderCart();
 }
+
 function renderCart(){
   const list=document.getElementById('cartItems');
   list.innerHTML='';
@@ -273,6 +342,7 @@ function renderCart(){
   });
   document.getElementById('total').innerText=total;
 }
+
 function toggleCart(){
   document.getElementById('cart').classList.toggle('active');
 }
