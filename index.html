@@ -73,7 +73,6 @@ header{
 .benefit:nth-child(4){animation-delay:.8s}
 
 .benefit i{font-size:26px;color:#00ff88}
-.benefit div{font-size:15px;opacity:.95}
 
 @keyframes fadeUp{
   to{opacity:1;transform:translateY(0)}
@@ -153,144 +152,171 @@ header{
   border-radius:50%;font-size:22px;
   cursor:pointer;z-index:400
 }
+
+/* LOGIN */
+.login-modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:500
+}
+.login-modal.active{display:flex}
+
+.login-box{
+  background:#111;
+  padding:30px;
+  width:320px;
+  border-radius:14px;
+  text-align:center
+}
+.login-box input{
+  width:100%;
+  padding:10px;
+  margin-bottom:12px;
+  background:#222;
+  border:none;
+  border-radius:6px;
+  color:#fff
+}
+.login-box button{
+  width:100%;
+  padding:12px;
+  background:#00ff88;
+  border:none;
+  border-radius:6px;
+  font-weight:600;
+  cursor:pointer
+}
+.login-box span{
+  display:block;
+  margin-top:12px;
+  opacity:.7;
+  cursor:pointer
+}
 </style>
 </head>
 
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <span><i class="fa-solid fa-truck"></i> Envíos a todo el país</span>
   <div>
-    <a href="#"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+    <a href="#" onclick="openLogin()"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
     <a href="#" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i></a>
   </div>
 </div>
 
-<!-- HEADER -->
 <header>
   <div class="header-inner">
     <div class="logo">PowerFuel</div>
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <h1>Construí tu <span>mejor versión</span></h1>
-    <p>Suplementos premium con ofertas reales, compra segura y envío a todo el país.</p>
+    <p>Suplementos premium con envío a todo el país</p>
 
     <div class="benefits">
-      <div class="benefit">
-        <i class="fa-solid fa-dumbbell"></i>
-        <div>Productos originales para máximo rendimiento</div>
-      </div>
-      <div class="benefit">
-        <i class="fa-solid fa-bolt"></i>
-        <div>Más fuerza, energía y recuperación</div>
-      </div>
-      <div class="benefit">
-        <i class="fa-solid fa-shield-halved"></i>
-        <div>Compra segura y protegida</div>
-      </div>
-      <div class="benefit">
-        <i class="fa-solid fa-location-dot"></i>
-        <div>Envíos rápidos a todo el país</div>
-      </div>
+      <div class="benefit"><i class="fa-solid fa-dumbbell"></i> Rendimiento real</div>
+      <div class="benefit"><i class="fa-solid fa-bolt"></i> Más energía</div>
+      <div class="benefit"><i class="fa-solid fa-shield-halved"></i> Compra segura</div>
+      <div class="benefit"><i class="fa-solid fa-location-dot"></i> Envíos rápidos</div>
     </div>
   </div>
 </section>
 
-<!-- PRODUCTS -->
 <section class="products">
   <h2>Ofertas destacadas</h2>
   <div class="grid" id="productGrid"></div>
 </section>
 
-<!-- CART -->
 <div class="cart" id="cart">
   <h3>Tu carrito</h3>
   <ul id="cartItems"></ul>
   <p>Total: $<span id="total">0</span></p>
-  <button onclick="checkout()">Finalizar compra</button>
 </div>
 
 <div class="cart-icon" onclick="toggleCart()">
   <i class="fa-solid fa-cart-shopping"></i>
 </div>
 
+<div class="login-modal" id="loginModal">
+  <div class="login-box">
+    <h3>Iniciar sesión</h3>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+    <span onclick="closeLogin()">Cancelar</span>
+  </div>
+</div>
+
 <script>
 const products=[
-  {
-    name:'Proteína Whey Gold 907g',
-    old:30000,
-    price:25000,
-    img:'https://images.unsplash.com/photo-1605296867304-46d5465a13f1'
-  },
-  {
-    name:'Creatina Monohidratada Micronizada',
-    old:22000,
-    price:18000,
-    img:'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61'
-  }
+  {name:'Proteína Whey Gold 907g',price:25000,img:'https://i.postimg.cc/1X4CNNMy/IMG-7950.webp'},
+  {name:'Creatina Monohidratada',price:18000,img:'https://i.postimg.cc/Y9vDvWdF/IMG-7951.jpg'}
 ];
 
 let cart=[];
 let total=0;
-let qty={};
 
 const grid=document.getElementById('productGrid');
 
 products.forEach((p,i)=>{
-  qty[i]=1;
   grid.innerHTML+=`
   <div class="card">
     <img src="${p.img}">
     <div class="product-name">${p.name}</div>
-    <div class="price-old">$${p.old}</div>
     <div class="price-new">$${p.price}</div>
-    <div class="qty">
-      <button onclick="changeQty(${i},-1)">-</button>
-      <span id="qty${i}">1</span>
-      <button onclick="changeQty(${i},1)">+</button>
-    </div>
     <button onclick="addToCart(${i})">
       <i class="fa-solid fa-cart-plus"></i> Agregar
     </button>
   </div>`;
 });
 
-function changeQty(i,val){
-  qty[i]=Math.max(1,qty[i]+val);
-  document.getElementById('qty'+i).innerText=qty[i];
-}
-
 function addToCart(i){
-  cart.push({...products[i],qty:qty[i]});
-  total+=products[i].price*qty[i];
+  cart.push(products[i]);
   renderCart();
 }
 
 function renderCart(){
   const list=document.getElementById('cartItems');
   list.innerHTML='';
-  cart.forEach(p=>{
-    list.innerHTML+=`<li>${p.qty}x ${p.name}<span>$${p.price*p.qty}</span></li>`;
+  total=0;
+  cart.forEach((p,i)=>{
+    total+=p.price;
+    list.innerHTML+=`
+      <li>
+        ${p.name} - $${p.price}
+        <button onclick="removeItem(${i})" style="background:none;border:none;color:red">
+          <i class="fa-solid fa-trash"></i>
+        </button>
+      </li>`;
   });
   document.getElementById('total').innerText=total;
+}
+
+function removeItem(i){
+  cart.splice(i,1);
+  renderCart();
 }
 
 function toggleCart(){
   document.getElementById('cart').classList.toggle('active');
 }
 
-function checkout(){
-  let msg='Pedido:%0A';
-  cart.forEach(p=>{
-    msg+=`${p.qty}x ${p.name} - $${p.price*p.qty}%0A`;
-  });
-  msg+=`Total: $${total}`;
-  window.open(`https://wa.me/5490000000000?text=${msg}`);
+function openLogin(){
+  document.getElementById('loginModal').classList.add('active');
+}
+function closeLogin(){
+  document.getElementById('loginModal').classList.remove('active');
+}
+function login(){
+  alert('Sesión iniciada (demo)');
+  closeLogin();
 }
 </script>
 
