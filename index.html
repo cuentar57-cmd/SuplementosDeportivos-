@@ -5,182 +5,80 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PowerFuel | Suplementos Deportivos</title>
 
-<!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome Icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Poppins',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+body{background:#0e0e0e;color:#fff}
 
-body{
-  background:#0e0e0e;
-  color:#fff;
-}
-
-/* ===== TOPBAR ===== */
+/* TOPBAR */
 .topbar{
   background:#000;
-  padding:8px 60px;
+  padding:8px 20px;
   display:flex;
   justify-content:space-between;
   font-size:14px;
-  border-bottom:1px solid rgba(255,255,255,.05);
+  border-bottom:1px solid rgba(255,255,255,.05)
 }
+.topbar a{color:#00ff88;text-decoration:none;margin-left:20px}
 
-.topbar span{opacity:.8;}
-.topbar a{
-  color:#00ff88;
-  text-decoration:none;
-  margin-left:20px;
-  font-weight:500;
-}
-
-/* ===== HEADER ===== */
+/* HEADER */
 header{
-  position:sticky;
-  top:0;
-  z-index:100;
+  position:sticky;top:0;z-index:100;
   background:rgba(0,0,0,.85);
-  backdrop-filter:blur(10px);
+  backdrop-filter:blur(10px)
 }
-
 .header-inner{
-  padding:20px 60px;
+  padding:18px 20px;
   display:flex;
   justify-content:space-between;
-  align-items:center;
+  align-items:center
 }
+.logo{font-size:26px;font-weight:700;color:#00ff88}
 
-.logo{
-  font-size:28px;
-  font-weight:700;
-  color:#00ff88;
-}
-
-.buy-btn{
-  padding:10px 28px;
-  border-radius:30px;
-  border:2px solid #00ff88;
-  background:transparent;
-  color:#00ff88;
-  cursor:pointer;
-  font-weight:600;
-  transition:.3s;
-}
-.buy-btn:hover{
-  background:#00ff88;
-  color:#000;
-}
-
-/* ===== HERO ===== */
+/* HERO */
 .hero{
-  height:90vh;
-  background:
-    linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.35)),
-    url('https://images.unsplash.com/photo-1599058917212-d750089bc07a') center/cover;
-  display:flex;
-  align-items:center;
-  padding:0 60px;
+  min-height:85vh;
+  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.35)),
+  url('https://images.unsplash.com/photo-1599058917212-d750089bc07a') center/cover;
+  display:flex;align-items:center;padding:0 20px
 }
+.hero h1{font-size:46px;line-height:1.1}
+.hero h1 span{color:#00ff88}
+.hero p{margin-top:15px;opacity:.9}
 
-.hero-content{max-width:600px;}
-.hero h1{font-size:52px;line-height:1.1;}
-.hero h1 span{color:#00ff88;}
-.hero p{margin:20px 0;opacity:.9;}
-
-/* ===== FEATURES ===== */
-.features{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:30px;
-  padding:60px;
-  background:#111;
-}
-
-.feature{
-  display:flex;
-  gap:15px;
-  align-items:flex-start;
-}
-
-.feature i{
-  font-size:26px;
-  color:#00ff88;
-}
-
-/* ===== FILTERS ===== */
-.filters{
-  display:flex;
-  gap:15px;
-  padding:30px 60px;
-  overflow-x:auto;
-}
-
-.filters button{
-  background:#161616;
-  color:#fff;
-  border:none;
-  padding:10px 18px;
-  border-radius:20px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.filters button.active,
-.filters button:hover{
-  background:#00ff88;
-  color:#000;
-}
-
-/* ===== PRODUCTS ===== */
-.products{
-  padding:60px;
-}
-
-.products h2{
-  font-size:36px;
-  margin-bottom:40px;
-}
-
+/* PRODUCTS */
+.products{padding:60px 20px}
+.products h2{font-size:34px;margin-bottom:35px}
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+  gap:30px
 }
-
 .card{
   background:#161616;
   border-radius:14px;
   padding:18px;
-  transition:.3s;
+  transition:.3s
 }
+.card:hover{transform:translateY(-6px)}
+.card img{width:100%;height:200px;object-fit:cover;border-radius:10px}
 
-.card:hover{transform:translateY(-6px);}
+.price-old{text-decoration:line-through;opacity:.5;font-size:14px}
+.price-new{color:#00ff88;font-size:22px;margin:6px 0}
 
-.card img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-  border-radius:10px;
+.qty{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:10px 0
 }
-
-.price-old{
-  text-decoration:line-through;
-  opacity:.5;
-  font-size:14px;
-}
-
-.price-new{
-  color:#00ff88;
-  font-size:22px;
-  margin:8px 0;
+.qty button{
+  width:30px;height:30px;
+  border:none;border-radius:50%;
+  background:#222;color:#fff;
+  cursor:pointer
 }
 
 .card button{
@@ -190,39 +88,58 @@ header{
   border:none;
   border-radius:8px;
   font-weight:600;
-  cursor:pointer;
+  cursor:pointer
 }
 
-/* ===== CART ===== */
+/* CART */
 .cart{
-  position:fixed;
-  right:-380px;
-  top:0;
-  width:350px;
-  height:100vh;
-  background:#000;
-  padding:25px;
-  transition:.35s;
-  z-index:300;
+  position:fixed;right:-380px;top:0;
+  width:350px;height:100vh;
+  background:#000;padding:25px;
+  transition:.35s;z-index:300
 }
-
-.cart.active{right:0;}
+.cart.active{right:0}
+.cart li{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-bottom:8px
+}
 
 .cart-icon{
-  position:fixed;
-  right:25px;
-  bottom:25px;
-  width:55px;
-  height:55px;
-  background:#00ff88;
-  color:#000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  font-size:22px;
-  cursor:pointer;
-  z-index:400;
+  position:fixed;right:20px;bottom:20px;
+  width:55px;height:55px;
+  background:#00ff88;color:#000;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;font-size:22px;
+  cursor:pointer;z-index:400
+}
+
+/* LOGIN MODAL */
+.modal{
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,.8);
+  display:none;align-items:center;justify-content:center;
+  z-index:500
+}
+.modal.active{display:flex}
+.modal-box{
+  background:#111;padding:30px;border-radius:12px;
+  width:320px;text-align:center
+}
+.modal-box input{
+  width:100%;padding:10px;margin:10px 0;
+  border:none;border-radius:6px
+}
+.modal-box button{
+  width:100%;padding:10px;
+  background:#00ff88;border:none;
+  font-weight:600;border-radius:6px;
+  cursor:pointer
+}
+
+@media(max-width:600px){
+  .hero h1{font-size:34px}
 }
 </style>
 </head>
@@ -231,10 +148,10 @@ header{
 
 <!-- TOPBAR -->
 <div class="topbar">
-  <span><i class="fa-solid fa-truck"></i> Envíos a todo el país · <i class="fa-solid fa-credit-card"></i> 3 cuotas sin interés</span>
+  <span><i class="fa-solid fa-truck"></i> Envíos a todo el país</span>
   <div>
-    <a href="#"><i class="fa-regular fa-user"></i> Mi cuenta</a>
-    <a href="#" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i> Carrito</a>
+    <a href="#" onclick="openLogin()"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+    <a href="#" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i></a>
   </div>
 </div>
 
@@ -242,109 +159,115 @@ header{
 <header>
   <div class="header-inner">
     <div class="logo">PowerFuel</div>
-    <button class="buy-btn" onclick="document.querySelector('.products').scrollIntoView({behavior:'smooth'})">
-      VER PRODUCTOS
-    </button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-content">
+  <div>
     <h1>Construí tu <span>mejor versión</span></h1>
-    <p>Suplementos deportivos premium con precios claros, ofertas reales y envío seguro.</p>
+    <p>Suplementos premium, ofertas reales y compra segura.</p>
   </div>
 </section>
-
-<!-- FEATURES -->
-<section class="features">
-  <div class="feature">
-    <i class="fa-solid fa-dumbbell"></i>
-    <div>Productos originales y de alto rendimiento</div>
-  </div>
-  <div class="feature">
-    <i class="fa-solid fa-bolt"></i>
-    <div>Más fuerza, energía y recuperación</div>
-  </div>
-  <div class="feature">
-    <i class="fa-solid fa-shield-halved"></i>
-    <div>Compra segura y protegida</div>
-  </div>
-  <div class="feature">
-    <i class="fa-solid fa-location-dot"></i>
-    <div>Envíos a todo el país</div>
-  </div>
-</section>
-
-<!-- FILTERS -->
-<div class="filters">
-  <button class="active">Todos</button>
-  <button>Proteínas</button>
-  <button>Creatina</button>
-  <button>Pre-Entreno</button>
-  <button>Aminoácidos</button>
-</div>
 
 <!-- PRODUCTS -->
 <section class="products">
   <h2>Ofertas destacadas</h2>
-  <div class="grid">
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1605296867304-46d5465a13f1">
-      <div class="price-old">$30.000</div>
-      <div class="price-new">$25.000</div>
-      <button onclick="addToCart('Proteína Whey',25000)">
-        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-      </button>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61">
-      <div class="price-old">$22.000</div>
-      <div class="price-new">$18.000</div>
-      <button onclick="addToCart('Creatina',18000)">
-        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
-      </button>
-    </div>
-  </div>
+  <div class="grid" id="productGrid"></div>
 </section>
 
 <!-- CART -->
 <div class="cart" id="cart">
   <h3>Tu carrito</h3>
   <ul id="cartItems"></ul>
-  <strong>Total: $<span id="total">0</span></strong>
-  <br><br>
-  <button>Finalizar compra</button>
+  <p>Total: $<span id="total">0</span></p>
+  <button onclick="checkout()">Finalizar compra</button>
 </div>
 
 <div class="cart-icon" onclick="toggleCart()">
   <i class="fa-solid fa-cart-shopping"></i>
 </div>
 
+<!-- LOGIN -->
+<div class="modal" id="loginModal">
+  <div class="modal-box">
+    <h3>Iniciar sesión</h3>
+    <input type="email" placeholder="Email">
+    <input type="password" placeholder="Contraseña">
+    <button onclick="login()">Ingresar</button>
+  </div>
+</div>
+
 <script>
+const products=[
+  {name:'Proteína Whey',old:30000,price:25000,img:'https://images.unsplash.com/photo-1605296867304-46d5465a13f1'},
+  {name:'Creatina',old:22000,price:18000,img:'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61'}
+];
+
 let cart=[];
 let total=0;
 
-function addToCart(product,price){
-  cart.push({product,price});
-  total+=price;
+const grid=document.getElementById('productGrid');
+
+products.forEach((p,i)=>{
+  grid.innerHTML+=`
+  <div class="card">
+    <img src="${p.img}">
+    <div class="price-old">$${p.old}</div>
+    <div class="price-new">$${p.price}</div>
+    <div class="qty">
+      <button onclick="changeQty(${i},-1)">-</button>
+      <span id="qty${i}">1</span>
+      <button onclick="changeQty(${i},1)">+</button>
+    </div>
+    <button onclick="addToCart(${i})">
+      <i class="fa-solid fa-cart-plus"></i> Agregar
+    </button>
+  </div>`;
+});
+
+let qty={0:1,1:1};
+
+function changeQty(i,val){
+  qty[i]=Math.max(1,(qty[i]||1)+val);
+  document.getElementById('qty'+i).innerText=qty[i];
+}
+
+function addToCart(i){
+  cart.push({...products[i],qty:qty[i]});
+  total+=products[i].price*qty[i];
   renderCart();
 }
 
 function renderCart(){
   const list=document.getElementById('cartItems');
   list.innerHTML='';
-  cart.forEach(item=>{
-    const li=document.createElement('li');
-    li.innerHTML=`${item.product} <span>$${item.price}</span>`;
-    list.appendChild(li);
+  cart.forEach(p=>{
+    list.innerHTML+=`<li>${p.qty}x ${p.name}<span>$${p.price*p.qty}</span></li>`;
   });
   document.getElementById('total').innerText=total;
 }
 
 function toggleCart(){
   document.getElementById('cart').classList.toggle('active');
+}
+
+function checkout(){
+  let msg='Pedido:%0A';
+  cart.forEach(p=>{
+    msg+=`${p.qty}x ${p.name} - $${p.price*p.qty}%0A`;
+  });
+  msg+=`Total: $${total}`;
+  window.open(`https://wa.me/5490000000000?text=${msg}`);
+}
+
+function openLogin(){
+  document.getElementById('loginModal').classList.add('active');
+}
+
+function login(){
+  document.getElementById('loginModal').classList.remove('active');
+  alert('Sesión iniciada correctamente');
 }
 </script>
 
