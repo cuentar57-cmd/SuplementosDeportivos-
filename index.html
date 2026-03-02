@@ -39,18 +39,50 @@ header{
 
 /* HERO */
 .hero{
-  min-height:85vh;
-  background:linear-gradient(to right,rgba(0,0,0,.85),rgba(0,0,0,.35)),
-  url('https://images.unsplash.com/photo-1599058917212-d750089bc07a') center/cover;
-  display:flex;align-items:center;padding:0 20px
+  min-height:90vh;
+  background:
+    linear-gradient(to right,rgba(0,0,0,.88),rgba(0,0,0,.35)),
+    url('https://images.unsplash.com/photo-1599058917212-d750089bc07a') center/cover;
+  display:flex;
+  align-items:center;
+  padding:0 20px
 }
-.hero h1{font-size:46px;line-height:1.1}
+.hero-content{max-width:650px}
+.hero h1{font-size:48px;line-height:1.1}
 .hero h1 span{color:#00ff88}
 .hero p{margin-top:15px;opacity:.9}
+
+/* BENEFITS */
+.benefits{
+  margin-top:35px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px
+}
+.benefit{
+  display:flex;
+  gap:15px;
+  align-items:flex-start;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeUp .6s ease forwards
+}
+.benefit:nth-child(1){animation-delay:.2s}
+.benefit:nth-child(2){animation-delay:.4s}
+.benefit:nth-child(3){animation-delay:.6s}
+.benefit:nth-child(4){animation-delay:.8s}
+
+.benefit i{font-size:26px;color:#00ff88}
+.benefit div{font-size:15px;opacity:.95}
+
+@keyframes fadeUp{
+  to{opacity:1;transform:translateY(0)}
+}
 
 /* PRODUCTS */
 .products{padding:60px 20px}
 .products h2{font-size:34px;margin-bottom:35px}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -63,7 +95,18 @@ header{
   transition:.3s
 }
 .card:hover{transform:translateY(-6px)}
-.card img{width:100%;height:200px;object-fit:cover;border-radius:10px}
+.card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  border-radius:10px
+}
+
+.product-name{
+  font-size:18px;
+  font-weight:600;
+  margin:12px 0 6px;
+}
 
 .price-old{text-decoration:line-through;opacity:.5;font-size:14px}
 .price-new{color:#00ff88;font-size:22px;margin:6px 0}
@@ -93,53 +136,22 @@ header{
 
 /* CART */
 .cart{
-  position:fixed;right:-380px;top:0;
+  position:fixed;
+  right:-380px;top:0;
   width:350px;height:100vh;
   background:#000;padding:25px;
   transition:.35s;z-index:300
 }
 .cart.active{right:0}
-.cart li{
-  display:flex;
-  justify-content:space-between;
-  font-size:14px;
-  margin-bottom:8px
-}
 
 .cart-icon{
-  position:fixed;right:20px;bottom:20px;
+  position:fixed;
+  right:20px;bottom:20px;
   width:55px;height:55px;
   background:#00ff88;color:#000;
   display:flex;align-items:center;justify-content:center;
   border-radius:50%;font-size:22px;
   cursor:pointer;z-index:400
-}
-
-/* LOGIN MODAL */
-.modal{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,.8);
-  display:none;align-items:center;justify-content:center;
-  z-index:500
-}
-.modal.active{display:flex}
-.modal-box{
-  background:#111;padding:30px;border-radius:12px;
-  width:320px;text-align:center
-}
-.modal-box input{
-  width:100%;padding:10px;margin:10px 0;
-  border:none;border-radius:6px
-}
-.modal-box button{
-  width:100%;padding:10px;
-  background:#00ff88;border:none;
-  font-weight:600;border-radius:6px;
-  cursor:pointer
-}
-
-@media(max-width:600px){
-  .hero h1{font-size:34px}
 }
 </style>
 </head>
@@ -150,7 +162,7 @@ header{
 <div class="topbar">
   <span><i class="fa-solid fa-truck"></i> Envíos a todo el país</span>
   <div>
-    <a href="#" onclick="openLogin()"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
+    <a href="#"><i class="fa-regular fa-user"></i> Iniciar sesión</a>
     <a href="#" onclick="toggleCart()"><i class="fa-solid fa-cart-shopping"></i></a>
   </div>
 </div>
@@ -164,9 +176,28 @@ header{
 
 <!-- HERO -->
 <section class="hero">
-  <div>
+  <div class="hero-content">
     <h1>Construí tu <span>mejor versión</span></h1>
-    <p>Suplementos premium, ofertas reales y compra segura.</p>
+    <p>Suplementos premium con ofertas reales, compra segura y envío a todo el país.</p>
+
+    <div class="benefits">
+      <div class="benefit">
+        <i class="fa-solid fa-dumbbell"></i>
+        <div>Productos originales para máximo rendimiento</div>
+      </div>
+      <div class="benefit">
+        <i class="fa-solid fa-bolt"></i>
+        <div>Más fuerza, energía y recuperación</div>
+      </div>
+      <div class="benefit">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>Compra segura y protegida</div>
+      </div>
+      <div class="benefit">
+        <i class="fa-solid fa-location-dot"></i>
+        <div>Envíos rápidos a todo el país</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -188,31 +219,34 @@ header{
   <i class="fa-solid fa-cart-shopping"></i>
 </div>
 
-<!-- LOGIN -->
-<div class="modal" id="loginModal">
-  <div class="modal-box">
-    <h3>Iniciar sesión</h3>
-    <input type="email" placeholder="Email">
-    <input type="password" placeholder="Contraseña">
-    <button onclick="login()">Ingresar</button>
-  </div>
-</div>
-
 <script>
 const products=[
-  {name:'Proteína Whey',old:30000,price:25000,img:'https://images.unsplash.com/photo-1605296867304-46d5465a13f1'},
-  {name:'Creatina',old:22000,price:18000,img:'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61'}
+  {
+    name:'Proteína Whey Gold 907g',
+    old:30000,
+    price:25000,
+    img:'https://images.unsplash.com/photo-1605296867304-46d5465a13f1'
+  },
+  {
+    name:'Creatina Monohidratada Micronizada',
+    old:22000,
+    price:18000,
+    img:'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61'
+  }
 ];
 
 let cart=[];
 let total=0;
+let qty={};
 
 const grid=document.getElementById('productGrid');
 
 products.forEach((p,i)=>{
+  qty[i]=1;
   grid.innerHTML+=`
   <div class="card">
     <img src="${p.img}">
+    <div class="product-name">${p.name}</div>
     <div class="price-old">$${p.old}</div>
     <div class="price-new">$${p.price}</div>
     <div class="qty">
@@ -226,10 +260,8 @@ products.forEach((p,i)=>{
   </div>`;
 });
 
-let qty={0:1,1:1};
-
 function changeQty(i,val){
-  qty[i]=Math.max(1,(qty[i]||1)+val);
+  qty[i]=Math.max(1,qty[i]+val);
   document.getElementById('qty'+i).innerText=qty[i];
 }
 
@@ -259,15 +291,6 @@ function checkout(){
   });
   msg+=`Total: $${total}`;
   window.open(`https://wa.me/5490000000000?text=${msg}`);
-}
-
-function openLogin(){
-  document.getElementById('loginModal').classList.add('active');
-}
-
-function login(){
-  document.getElementById('loginModal').classList.remove('active');
-  alert('Sesión iniciada correctamente');
 }
 </script>
 
